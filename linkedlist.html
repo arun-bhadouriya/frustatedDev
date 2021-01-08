@@ -1,1 +1,240 @@
-<h1>This is Linked List Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h3>Linked Lists</h3>
+<p>A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The
+    elements in a linked list are linked using pointers.In simple words, a linked list consists of nodes where each node
+    contains a data field and a reference(link) to the next node in the list.</p>
+<p>Node Structure is </p>
+<pre>
+    class Node {
+        public:
+            int data;
+            Node * next;
+    }; 
+</pre>
+
+<p>A simple code snippet to create linked list (manuaally giving values)</p>
+
+<pre>
+    #include &lt;iostream&gt;
+        using namespace std;
+        class Node {
+            public:
+                int data; <span>//first block of the node</span>
+                Node * next; <span>//second block of a node to store the address ptr of the next node</span>
+        
+            };
+        
+            <span>//a function to print a linked list in order</span>
+
+            void print_LL(Node*head){
+                Node*temp=head;
+                while(temp!=NULL){
+                    cout&lt;&lt;temp-&gt;data&lt;&lt;"-&gt;";
+                    temp=temp->next;
+                }
+            }
+        
+            int main(){
+                
+                Node*head=NULL;
+                Node*second=NULL;
+                Node*third=NULL;
+        
+                head= new Node();
+                second=new Node();
+                third= new Node();
+        
+                head->data=1;
+                head->next=second;
+        
+                second->data=2;
+                second->next=third;
+        
+                third->data=3;
+                third->next=NULL;
+        
+            print_LL(head);
+            }
+        
+</pre>
+
+<b>
+    <p>Output: 1->2->3-></p>
+</b>
+
+<h4>Basics fundamentals action of a Linked lists are -</h4>
+<ol>
+    <li>INSERTION
+        <ul>
+            <li>There are three Ways-</li>
+            <ol>
+                <li>At the front of the linked list
+                <li> After a given node.</li>
+                <li> At the end of the linked list.</li>
+            </ol>
+        </ul>
+    </li>
+    <li>DELETION</li>
+    <li>SEARCHING</li>
+</ol>
+<pre>
+    <span>//Insertion</span>
+
+    #include&lt;iostream&gt;
+    using namespace std;
+
+    class Node{
+        public:
+            int data;
+            Node*next;
+
+            Node(int d){
+                data=d;
+                next=NULL;
+            }
+    };
+
+    void insertAtHead( Node*&head, int data ){
+        if(head==NULL){
+            head=new Node(data);
+            return;
+        }
+
+        Node * n= new Node(data);
+        n->next = head;
+        head = n;
+    }
+    int length(Node*head){
+        Node*temp=head;
+        int l=0;
+        while(temp!=NULL){
+            l++;
+            temp=temp->next;
+        }
+        return l;
+    }
+    
+    void insertAtTail(Node*&head,int data){
+        if(head==NULL){
+            insertAtHead(head,data);
+            return;
+        }
+    
+        Node*temp=head;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        Node*n=new Node(data);
+        temp->next=n;
+    }
+    
+    void insertInMiddle(Node*head , int data, int pos){
+        if(head==NULL or pos==0){
+            insertAtHead(head,data);
+            return;
+        }
+    
+        else if(pos>length(head)){
+            insertAtTail(head,data);
+            return;
+        }
+    
+        int jump=1;
+        Node*temp=head;
+        while(jump &lt; pos-1){
+            temp=temp->next;
+            jump++;
+        }
+        Node*n=new Node(data);
+        n->next=temp->next;
+        temp->next=n;
+    }
+
+    void print_LL(Node*head){
+        Node*temp=head;
+        while(temp!=NULL){
+            cout&lt;<temp->data&lt;&lt;"->";
+            temp=temp->next;
+        }
+    }
+
+    int main(){
+        Node* head =NULL;
+        insertAtHead(head,1);
+        insertAtHead(head,2);
+        insertAtHead(head,3);
+    
+        print_LL(head); <span>//this will OUTPUT: 3->2->1-> </span>
+        insertInMiddle(head,4,2);
+        cout&lt;&lt;endl;
+        print_LL(head);  <span>//this will OUTPUT: 3->4->2->1-></span>
+        cout&lt;&lt;endl;
+        insertAtTail(head,5);
+        print_LL(head); <span>//this will OUTPUT: 3->4->2->1->5-> </span>
+    }
+
+</pre>
+
+<p>DELETION</p>
+<pre>
+    <span>//deletion</span>
+    
+    <span>//function to delete the head of the linked list</span>
+
+    void deleteHead(Node*&head){
+        if(head==NULL){
+            return;
+        }
+        Node* temp= head->next;
+        delete head;
+        head=temp;
+    }
+
+    <span>// Function to delete the tail of the linked list</span>
+
+    void deleteTail(Node*&head){
+        if(head==NULL) return;
+
+        Node*temp=head;
+        while(temp->next->next!=NULL){
+            temp=temp->next;
+        }
+        Node*previous=temp;
+        temp=temp->next;
+        delete temp;
+        previous->next=NULL;
+    }
+
+    <span>// Function to delete at a given positon in a linked list;</span>
+    
+    void deleteAtGivenPosition(Node*&head , int p ){
+        if(head==NULL) return;
+
+        else if(p==length(head)){
+            deleteTail(head);
+            return;
+        }
+
+        int jump=1;
+        Node*temp=head;
+        while(jump&lt;=p-2){
+            temp=temp->next;
+            jump++;
+        }
+
+        Node*n= temp->next;
+        temp->next=n->next;
+        delete n;
+    }
+
+</pre>
+</body>
+</html>
