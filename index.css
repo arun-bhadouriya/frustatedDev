@@ -7,3 +7,49 @@ span{
     color: darkgreen;
     font-size: large;
 }
+body{
+    margin: 0;
+    font-size: large;
+    background-color: darkred;
+}
+.body{
+    background-color: darkred;
+    height: 105%;
+}
+.body h1{
+    color:chartreuse;
+    margin: 10px;
+    padding: 10px;
+    /* background-color: darkviolet; */
+    text-align: center;
+    width: 80%;
+}
+
+.body p{
+    text-align: center;
+    width: 85%;
+    font-size: larger;
+
+}
+.body ol{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.body ol li{
+    min-width: 40%;
+    border: rgb(19, 18, 17) 1px solid;
+    font-size: 1.5rem;
+    padding: 20px;
+    margin: 5px;
+    color: chartreuse;
+    background-color: darkgreen;
+   
+}
+
+.body ol li a{
+    text-decoration: none;
+    color: chartreuse;
+}
