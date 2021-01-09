@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linked List</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <h3>Linked Lists</h3>
-<p>A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The
-    elements in a linked list are linked using pointers.In simple words, a linked list consists of nodes where each node
-    contains a data field and a reference(link) to the next node in the list.</p>
-<p>Node Structure is </p>
-<pre>
+    <p>A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations.
+        The
+        elements in a linked list are linked using pointers.In simple words, a linked list consists of nodes where each
+        node
+        contains a data field and a reference(link) to the next node in the list.</p>
+    <p>Node Structure is </p>
+    <pre>
     class Node {
         public:
             int data;
@@ -20,9 +24,9 @@
     }; 
 </pre>
 
-<p>A simple code snippet to create linked list (manuaally giving values)</p>
+    <p>A simple code snippet to create linked list (manuaally giving values)</p>
 
-<pre>
+    <pre>
     #include &lt;iostream&gt;
         using namespace std;
         class Node {
@@ -61,31 +65,42 @@
                 third->data=3;
                 third->next=NULL;
         
-            print_LL(head);
+                print_LL(head);
             }
         
 </pre>
 
-<b>
-    <p>Output: 1->2->3-></p>
-</b>
+    <b>
+        <p>Output: 1->2->3-></p>
+    </b>
 
-<h4>Basics fundamentals action of a Linked lists are -</h4>
-<ol>
-    <li>INSERTION
-        <ul>
-            <li>There are three Ways-</li>
-            <ol>
-                <li>At the front of the linked list
-                <li> After a given node.</li>
-                <li> At the end of the linked list.</li>
-            </ol>
-        </ul>
-    </li>
-    <li>DELETION</li>
-    <li>SEARCHING</li>
-</ol>
-<pre>
+    <h4>Basics fundamentals action of a Linked lists are -</h4>
+    <ol>
+        <li>INSERTION
+            <ul>
+                <li>There are three Ways-</li>
+                <ol>
+                    <li>At the front of the linked list
+                    <li> After a given node.</li>
+                    <li> At the end of the linked list.</li>
+                </ol>
+            </ul>
+        </li>
+        <li>DELETION
+            <ul>
+                <li>Deletion At the head </li>
+                <li>Deletion at a given position</li>
+                <li>Deletion At tail</li>
+            </ul>
+        </li>
+        <li>SEARCHING
+            <ul>
+                <li>linear search( iterative approach)</li>
+                <li>linear search (Recursive Approach) </li>
+            </ul>
+        </li>
+    </ol>
+    <pre>
     <span>//Insertion</span>
 
     #include&lt;iostream&gt;
@@ -183,8 +198,8 @@
 
 </pre>
 
-<p>DELETION</p>
-<pre>
+    <p>DELETION</p>
+    <pre>
     <span>//deletion</span>
     
     <span>//function to delete the head of the linked list</span>
@@ -237,4 +252,94 @@
 
 </pre>
 </body>
+
+<p>SEARCHING</p>
+<pre>
+    <span>//Using Linear Search to search data in a given linked list</span>
+    <span>//Iterative Approach</span>
+    bool Search(Node*head,int key){
+        Node*temp=head;
+        while(temp!=NULL){
+            if(temp->data==key){
+                return true;
+            }
+            temp=temp->next;
+        }
+        return false;
+    }
+
+    <span>//Recursive approach</span>
+    
+    bool SearchRecursive(Node*head, int key){
+        if(head==NULL) return fasle;
+
+        if(head->data==key)return true;
+
+        SearchRecursive(head->next,key);
+    }
+
+</pre>
+
+<h4>Ques> Take Users Input for creating a linked list ? </h4>
+<pre>
+    class node {
+        public: 
+            int data;
+            node*next;
+
+        node(int d){
+            d=data;
+            next=NULL;
+        }
+    };
+
+    node * take_input(){
+        int d;
+        node*head=NULL;
+        <span>//cin>>d;</span> 
+        while(cin>>d){
+            insertAtTail(head,d);  <span>//This function is defined above in INSERTION partof linkedlist.</span>
+            <span>//cin>>d;</span>
+        }
+
+        return head;
+    }
+    int main(){
+        <span>//Now we can easily take input from the user using this take_input function</span>
+
+        node*head=take_input();
+        print_LL(head);
+    }
+
+</pre>
+
+<h4>OPERATOR OVERLOADING</h4>
+<div class="span">Using OPERATOR OVERLOADING , we can use cout default print method to print the linked list .
+    Also we can use cascading approach to print multiple linked list throug single cout statement.
+</div>
+
+<pre>
+
+    void operator&lt;&lt;(ostream &os,Node*head){
+        print_LL(head);
+        return;
+    }
+
+    <span>//Another Way using cascading of operators</span>
+
+    ostream& operator&lt;&lt;(ostream &os,Node*head){
+        print_LL(head);
+        return os;
+    }
+
+    <span>//Similarly we can overload the right shift operator (>>) to take input</span>
+
+    istream& operator>>(istream &is, Node*head){
+        head= take_input();
+        return is;
+    }
+
+</pre>
+
+
 </html>
