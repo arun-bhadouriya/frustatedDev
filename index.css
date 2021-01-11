@@ -1,6 +1,15 @@
 pre{
     background-color: black;
     color:white;
+    display: none;
+}
+
+.question{
+    cursor: pointer;
+    background-color: dimgray;
+    padding: 10px;
+    margin: 10px;
+    border: gainsboro solid 5px;
 }
 
 span{
@@ -8,6 +17,7 @@ span{
     font-size: large;
 }
 body{
+    padding:50px;
     margin: 0;
     font-size: large;
     background-color: darkred;
@@ -26,20 +36,20 @@ body{
 }
 
 .body p{
-    text-align: center;
+    /* text-align: center; */
     width: 85%;
     font-size: larger;
 
 }
 .body ol{
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .body ol li{
-    min-width: 40%;
+    min-width: 55vh;
     border: rgb(19, 18, 17) 1px solid;
     font-size: 1.5rem;
     padding: 20px;
@@ -52,4 +62,9 @@ body{
 .body ol li a{
     text-decoration: none;
     color: chartreuse;
+}
+
+h1,h2,h3,h4{
+    text-transform: capitalize;
+    text-decoration: underline;
 }
