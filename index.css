@@ -3,6 +3,7 @@ pre{
     color:white;
     /* display: none; */
     margin:0;
+    overflow-x: scroll;
 }
 
 .question{
