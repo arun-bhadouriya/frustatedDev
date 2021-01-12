@@ -271,24 +271,28 @@
                     
                             <span>// Function to delete at a given positon in a linked list;</span>
                             
-                            void deleteAtGivenPosition(Node*&head , int p ){
-                                if(head==NULL) return;
-                    
-                                else if(p==length(head)){
-                                    deleteTail(head);
+                            void deleteAtGivenPosition(node*&head,int pos){
+                                if(head==NULL){
                                     return;
                                 }
-                    
+                                if(pos==1){
+                                    deleteAtHead(head);
+                                    return;
+                                }
+                                if(pos==length(head)){
+                                    deleteAtTail(head);
+                                    return;
+                                }
+                                node*positionNode=head;
                                 int jump=1;
-                                Node*temp=head;
-                                while(jump&lt;=p-2){
-                                    temp=temp->next;
+                                while(jump&lt;=pos-2){
+                                    positionNode=positionNode->next;
                                     jump++;
                                 }
-                    
-                                Node*n= temp->next;
-                                temp->next=n->next;
-                                delete n;
+                                node*nextNode=positionNode->next;
+                                positionNode->next=positionNode->next->next;
+                                // positionNode=positionNode->next;
+                                delete nextNode;
                             }
                     
                             </pre>
@@ -319,7 +323,7 @@
                         
                                 if(head->data==key)return true;
                         
-                                SearchRecursive(head->next,key);
+                                return SearchRecursive(head->next,key);
                             }
                         
                         </pre>
@@ -417,7 +421,7 @@
                                     <span>//now change the current node adress to the previous node (=NULL)</span>
                                     C->next=prev;
                         
-                                    <span>//now move prev node pointing to current node and current node pointing to next node< /span>
+                                    <span>//now move prev node pointing to current node and current node pointing to next node</span>
                                     prev=C;
                                     C=N;
                                 }
