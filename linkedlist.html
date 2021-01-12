@@ -10,444 +10,474 @@
 </head>
 
 <body>
+    <div class="wrapperLinkedList">
+        <h1>Linked List</h1>
+    <div class="col">
+        <div class="tabs">
+            <div class="tab">
+                <input type="radio" id="rd1" name="rd">
+                <label class="tab-label" for="rd1">Linked Lists</label>
+                <div class="tab-content">
+                    A linked list is a linear data structure, in which the elements are not stored at contiguous memory
+                    locations.
+                    The
+                    elements in a linked list are linked using pointers.In simple words, a linked list consists of nodes
+                    where
+                    each
+                    node
+                    contains a data field and a reference(link) to the next node in the list.
+                </div>
+            </div>
 
-    
-        <h3>Linked Lists</h3>
-        <p>A linked list is a linear data structure, in which the elements are not stored at contiguous memory
-            locations.
-            The
-            elements in a linked list are linked using pointers.In simple words, a linked list consists of nodes where
-            each
-            node
-            contains a data field and a reference(link) to the next node in the list.</p>
-        <div class="question">
-            <p>Node Structure is </p>
-            ... click here
-            <pre>
-                class Node {
-                    public:
-                        int data;
-                        Node * next;
-                }; 
-            </pre>
+            <div class="tab">
+                <input type="radio" id="rd2" name="rd">
+                <label class="tab-label" for="rd2">Node Structure</label>
+                <div class="tab-content">
+                    <pre>
+                    class Node {
+                        public:
+                            int data;
+                            Node * next;
+                    }; 
+                </pre>
+                </div>
+            </div>
+
+            <div class="tab">
+                <input type="radio" id="rd3" name="rd">
+                <label class="tab-label" for="rd3">A simple code snippet to create linked list (manuaally giving
+                    values)</label>
+                <div class="tab-content">
+                    <pre>
+                    #include &lt;iostream&gt;
+                    using namespace std;
+                    class Node {
+                        public:
+                            int data; <span>//first block of the node</span>
+                            Node * next; <span>//second block of a node to store the address ptr of the next node</span>
+                    
+                    };
+                        
+                    <span>//a function to print a linked list in order</span>
+            
+                    void print_LL(Node*head){
+                        Node*temp=head;
+                        while(temp!=NULL){
+                            cout&lt;&lt;temp-&gt;data&lt;&lt;"-&gt;";
+                            temp=temp->next;
+                        }
+                    }
+                
+                    int main(){
+                        
+                        Node*head=NULL;
+                        Node*second=NULL;
+                        Node*third=NULL;
+                
+                        head= new Node();
+                        second=new Node();
+                        third= new Node();
+                
+                        head->data=1;
+                        head->next=second;
+                
+                        second->data=2;
+                        second->next=third;
+                
+                        third->data=3;
+                        third->next=NULL;
+                
+                        print_LL(head);
+                    }
+                    
+                </pre>
+
+                    <b>
+                        <p>Output: 1->2->3-></p>
+                    </b>
+                </div>
+            </div>
+
+
+
+            <h4>Basics fundamentals action of a Linked lists are -</h4>
+            <ol>
+                <li>INSERTION
+                    <ul>
+                        <li>There are three Ways-</li>
+                        <ol>
+                            <li>At the front of the linked list
+                            <li> After a given node.</li>
+                            <li> At the end of the linked list.</li>
+                        </ol>
+                    </ul>
+                </li>
+                <li>DELETION
+                    <ul>
+                        <li>Deletion At the head </li>
+                        <li>Deletion at a given position</li>
+                        <li>Deletion At tail</li>
+                    </ul>
+                </li>
+                <li>SEARCHING
+                    <ul>
+                        <li>linear search( iterative approach)</li>
+                        <li>linear search (Recursive Approach) </li>
+                    </ul>
+                </li>
+            </ol>
         </div>
-    
 
-    <div class="question">
-
-        <h4>A simple code snippet to create linked list (manuaally giving values)</h4>
-        ...
-        click here <br>
-        <pre>
-            #include &lt;iostream&gt;
-            using namespace std;
-            class Node {
-                public:
-                    int data; <span>//first block of the node</span>
-                    Node * next; <span>//second block of a node to store the address ptr of the next node</span>
-            
-            };
-                
-            <span>//a function to print a linked list in order</span>
+        <div class="tab">
+            <input type="radio" id="rd4" name="rd">
+            <label class="tab-label" for="rd4">INSERTION</label>
+            <div class="tab-content">
+                <pre>
+                    <span>//Insertion</span>
     
-            void print_LL(Node*head){
-                Node*temp=head;
-                while(temp!=NULL){
-                    cout&lt;&lt;temp-&gt;data&lt;&lt;"-&gt;";
-                    temp=temp->next;
+        #include&lt;iostream&gt;
+        using namespace std;
+    
+        class Node{
+            public:
+                int data;
+                Node*next;
+    
+                Node(int d){
+                    data=d;
+                    next=NULL;
                 }
-            }
-        
-            int main(){
-                
-                Node*head=NULL;
-                Node*second=NULL;
-                Node*third=NULL;
-        
-                head= new Node();
-                second=new Node();
-                third= new Node();
-        
-                head->data=1;
-                head->next=second;
-        
-                second->data=2;
-                second->next=third;
-        
-                third->data=3;
-                third->next=NULL;
-        
-                print_LL(head);
-            }
-            
-        </pre>
-
-        <b>
-            <p>Output: 1->2->3-></p>
-        </b>
-
-    </div>
-
-    <div class="question">
-
-        <h4>Basics fundamentals action of a Linked lists are -</h4>
-        <ol>
-            <li>INSERTION
-                <ul>
-                    <li>There are three Ways-</li>
-                    <ol>
-                        <li>At the front of the linked list
-                        <li> After a given node.</li>
-                        <li> At the end of the linked list.</li>
-                    </ol>
-                </ul>
-            </li>
-            <li>DELETION
-                <ul>
-                    <li>Deletion At the head </li>
-                    <li>Deletion at a given position</li>
-                    <li>Deletion At tail</li>
-                </ul>
-            </li>
-            <li>SEARCHING
-                <ul>
-                    <li>linear search( iterative approach)</li>
-                    <li>linear search (Recursive Approach) </li>
-                </ul>
-            </li>
-        </ol>
-    </div>
-
-    <div class="question">
-        <h4>INSERTION</h4>
-        .....
-        click here
-        <pre>
-                <span>//Insertion</span>
-
-    #include&lt;iostream&gt;
-    using namespace std;
-
-    class Node{
-        public:
-            int data;
-            Node*next;
-
-            Node(int d){
-                data=d;
-                next=NULL;
-            }
-    };
-
-    void insertAtHead( Node*&head, int data ){
-        if(head==NULL){
-            head=new Node(data);
-            return;
-        }
-
-        Node * n= new Node(data);
-        n->next = head;
-        head = n;
-    }
-    int length(Node*head){
-        Node*temp=head;
-        int l=0;
-        while(temp!=NULL){
-            l++;
-            temp=temp->next;
-        }
-        return l;
-    }
+        };
     
-    void insertAtTail(Node*&head,int data){
-        if(head==NULL){
-            insertAtHead(head,data);
-            return;
-        }
-    
-        Node*temp=head;
-        while(temp->next!=NULL){
-            temp=temp->next;
-        }
-        Node*n=new Node(data);
-        temp->next=n;
-    }
-    
-    void insertInMiddle(Node*head , int data, int pos){
-        if(head==NULL or pos==0){
-            insertAtHead(head,data);
-            return;
-        }
-    
-        else if(pos>length(head)){
-            insertAtTail(head,data);
-            return;
-        }
-    
-        int jump=1;
-        Node*temp=head;
-        while(jump &lt; pos-1){
-            temp=temp->next;
-            jump++;
-        }
-        Node*n=new Node(data);
-        n->next=temp->next;
-        temp->next=n;
-    }
-
-    void print_LL(Node*head){
-        Node*temp=head;
-        while(temp!=NULL){
-            cout&lt;<temp->data&lt;&lt;"->";
-            temp=temp->next;
-        }
-    }
-
-    int main(){
-        Node* head =NULL;
-        insertAtHead(head,1);
-        insertAtHead(head,2);
-        insertAtHead(head,3);
-    
-        print_LL(head); <span>//this will OUTPUT: 3->2->1-> </span>
-        insertInMiddle(head,4,2);
-        cout&lt;&lt;endl;
-        print_LL(head);  <span>//this will OUTPUT: 3->4->2->1-></span>
-        cout&lt;&lt;endl;
-        insertAtTail(head,5);
-        print_LL(head); <span>//this will OUTPUT: 3->4->2->1->5-> </span>
-    }
-
-</pre>
-    </div>
-
-    <div class="question">
-
-        <h4>DELETION</h4>
-        ...
-        click here
-        <pre>
-        <span>//deletion</span>
-    
-        <span>//function to delete the head of the linked list</span>
-
-        void deleteHead(Node*&head){
+        void insertAtHead( Node*&head, int data ){
             if(head==NULL){
+                head=new Node(data);
                 return;
             }
-            Node* temp= head->next;
-            delete head;
-            head=temp;
+    
+            Node * n= new Node(data);
+            n->next = head;
+            head = n;
         }
-
-        <span>// Function to delete the tail of the linked list</span>
-
-        void deleteTail(Node*&head){
-            if(head==NULL) return;
-
+        int length(Node*head){
             Node*temp=head;
-            while(temp->next->next!=NULL){
+            int l=0;
+            while(temp!=NULL){
+                l++;
                 temp=temp->next;
             }
-            Node*previous=temp;
-            temp=temp->next;
-            delete temp;
-            previous->next=NULL;
+            return l;
         }
-
-        <span>// Function to delete at a given positon in a linked list;</span>
         
-        void deleteAtGivenPosition(Node*&head , int p ){
-            if(head==NULL) return;
-
-            else if(p==length(head)){
-                deleteTail(head);
+        void insertAtTail(Node*&head,int data){
+            if(head==NULL){
+                insertAtHead(head,data);
                 return;
             }
-
+        
+            Node*temp=head;
+            while(temp->next!=NULL){
+                temp=temp->next;
+            }
+            Node*n=new Node(data);
+            temp->next=n;
+        }
+        
+        void insertInMiddle(Node*head , int data, int pos){
+            if(head==NULL or pos==0){
+                insertAtHead(head,data);
+                return;
+            }
+        
+            else if(pos>length(head)){
+                insertAtTail(head,data);
+                return;
+            }
+        
             int jump=1;
             Node*temp=head;
-            while(jump&lt;=p-2){
+            while(jump &lt; pos-1){
                 temp=temp->next;
                 jump++;
             }
-
-            Node*n= temp->next;
-            temp->next=n->next;
-            delete n;
+            Node*n=new Node(data);
+            n->next=temp->next;
+            temp->next=n;
         }
-
-        </pre>
-    </div>
-
-    <div class="question">
-        <h4>SEARCHING</h4>
-        ...
-        click here
-        <pre>
-    <span>//Using Linear Search to search data in a given linked list</span>
-    <span>//Iterative Approach</span>
-    bool Search(Node*head,int key){
-        Node*temp=head;
-        while(temp!=NULL){
-            if(temp->data==key){
-                return true;
-            }
-            temp=temp->next;
-        }
-        return false;
-    }
-
-    <span>//Recursive approach</span>
     
-    bool SearchRecursive(Node*head, int key){
-        if(head==NULL) return fasle;
-
-        if(head->data==key)return true;
-
-        SearchRecursive(head->next,key);
-    }
-
-</pre>
-    </div>
-
-    <div class="question">
-        <h4>Ques> Take Users Input for creating a linked list ? </h4>
-        ...
-        click here
-        <pre>
-    class node {
-        public: 
-            int data;
-            node*next;
-
-        node(int d){
-            d=data;
-            next=NULL;
+        void print_LL(Node*head){
+            Node*temp=head;
+            while(temp!=NULL){
+                cout&lt;<temp->data&lt;&lt;"->";
+                temp=temp->next;
+            }
         }
-    };
-
-    node * take_input(){
-        int d;
-        node*head=NULL;
-        <span>//cin>>d;</span> 
-        while(cin>>d){
-            insertAtTail(head,d);  <span>//This function is defined above in INSERTION partof linkedlist.</span>
-            <span>//cin>>d;</span>
+    
+        int main(){
+            Node* head =NULL;
+            insertAtHead(head,1);
+            insertAtHead(head,2);
+            insertAtHead(head,3);
+        
+            print_LL(head); <span>//this will OUTPUT: 3->2->1-> </span>
+            insertInMiddle(head,4,2);
+            cout&lt;&lt;endl;
+            print_LL(head);  <span>//this will OUTPUT: 3->4->2->1-></span>
+            cout&lt;&lt;endl;
+            insertAtTail(head,5);
+            print_LL(head); <span>//this will OUTPUT: 3->4->2->1->5-> </span>
         }
-
-        return head;
-    }
-    int main(){
-        <span>//Now we can easily take input from the user using this take_input function</span>
-
-        node*head=take_input();
-        print_LL(head);
-    }
-
-</pre>
-
-    </div>
-
-    <div class="question">
-
-        <h4>OPERATOR OVERLOADING</h4>
-        <div class="span">Using OPERATOR OVERLOADING , we can use cout default print method to print the linked list .
-            Also we can use cascading approach to print multiple linked list throug single cout statement.
+    
+    </pre>
+            </div>
         </div>
-        ...
-        click here
-        <pre>
-
-    void operator&lt;&lt;(ostream &os,Node*head){
-        print_LL(head);
-        return;
-    }
-
-    <span>//Another Way using cascading of operators</span>
-
-    ostream& operator&lt;&lt;(ostream &os,Node*head){
-        print_LL(head);
-        return os;
-    }
-
-    <span>//Similarly we can overload the right shift operator (>>) to take input</span>
-
-    istream& operator>>(istream &is, Node*head){
-        head= take_input();
-        return is;
-    }
-
-</pre>
-    </div>
-    <div class="question">
-
-        <h4>Question. Reverse a given Linked List?</h4>
-        ...
-        click here
-
-        <pre>
-
-    <span>//Iterative Approach</span>
-    void reverse_LL(Node*&head){
-
-        Node*C=head;
-        Node*prev=NULL;
-        Node*N=head;
-
-        while(C!=NULL){
-            <span>//save the next node before altering the address of the current node</span>
-            N=C->next;
-            <span>//now change the current node adress to the previous node (=NULL)</span>
-            C->next=prev;
-
-            <span>//now move prev node pointing to current node and current node pointing to next node< /span>
-            prev=C;
-            C=N;
-        }
-
-        head=prev;
-    }
-</pre>
-    </div>
-
-    <div class="question">
-        <h4>Using Recursion Reversing A given a Linked List</h4>
-        ... click here
-        <pre>
-
-    <span>//Recursive Approach</span>
-
-    void RecursiveReverse(Node*head){
-        <span>////base case</span>
-        if(head==NULL or head->next==NULL){
-            return head;
-        }
-
-        Node*shead = RecursiveReverse(head->next);
-        
-        Node*temp=shead;
-
-        while(temp->next!=NULL){
-            temp=temp->next;
-        }
-
-        head->next=NULL;
-        temp->next=head;
-        
-        return shead;
-        
-    }
-
-</pre>
-    </div>
-
-    <div class="question">
-        <h4>MidPoint of a Linked List</h4>
-        <p>Using Runner Technique</p>
-
-        <pre>
+        <div class="tab">
+            <input type="radio" id="rd5" name="rd">
+            <label class="tab-label" for="rd5">DELETION</label>
+            <div class="tab-content">
+                <pre>
+                    <span>//deletion</span>
+                
+                    <span>//function to delete the head of the linked list</span>
             
-        </pre>
+                    void deleteHead(Node*&head){
+                        if(head==NULL){
+                            return;
+                        }
+                        Node* temp= head->next;
+                        delete head;
+                        head=temp;
+                    }
+            
+                    <span>// Function to delete the tail of the linked list</span>
+            
+                    void deleteTail(Node*&head){
+                        if(head==NULL) return;
+            
+                        Node*temp=head;
+                        while(temp->next->next!=NULL){
+                            temp=temp->next;
+                        }
+                        Node*previous=temp;
+                        temp=temp->next;
+                        delete temp;
+                        previous->next=NULL;
+                    }
+            
+                    <span>// Function to delete at a given positon in a linked list;</span>
+                    
+                    void deleteAtGivenPosition(Node*&head , int p ){
+                        if(head==NULL) return;
+            
+                        else if(p==length(head)){
+                            deleteTail(head);
+                            return;
+                        }
+            
+                        int jump=1;
+                        Node*temp=head;
+                        while(jump&lt;=p-2){
+                            temp=temp->next;
+                            jump++;
+                        }
+            
+                        Node*n= temp->next;
+                        temp->next=n->next;
+                        delete n;
+                    }
+            
+                    </pre>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd6" name="rd">
+            <label class="tab-label" for="rd6">SEARCHING</label>
+            <div class="tab-content">
+                <pre>
+                    <span>//Using Linear Search to search data in a given linked list</span>
+                    <span>//Iterative Approach</span>
+                    bool Search(Node*head,int key){
+                        Node*temp=head;
+                        while(temp!=NULL){
+                            if(temp->data==key){
+                                return true;
+                            }
+                            temp=temp->next;
+                        }
+                        return false;
+                    }
+                
+                    <span>//Recursive approach</span>
+                    
+                    bool SearchRecursive(Node*head, int key){
+                        if(head==NULL) return fasle;
+                
+                        if(head->data==key)return true;
+                
+                        SearchRecursive(head->next,key);
+                    }
+                
+                </pre>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd7" name="rd">
+            <label class="tab-label" for="rd7">Q. Take Users Input for creating a linked list ?</label>
+            <div class="tab-content">
+                <pre>
+                    class node {
+                        public: 
+                            int data;
+                            node*next;
+                
+                        node(int d){
+                            d=data;
+                            next=NULL;
+                        }
+                    };
+                
+                    node * take_input(){
+                        int d;
+                        node*head=NULL;
+                        <span>//cin>>d;</span> 
+                        while(cin>>d){
+                            insertAtTail(head,d);  <span>//This function is defined above in INSERTION partof linkedlist.</span>
+                            <span>//cin>>d;</span>
+                        }
+                
+                        return head;
+                    }
+                    int main(){
+                        <span>//Now we can easily take input from the user using this take_input function</span>
+                
+                        node*head=take_input();
+                        print_LL(head);
+                    }
+                
+                </pre>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" id="rd8" name="rd">
+            <label class="tab-label" for="rd8">Q. Some Operator Overloading we can do in Linked List.</label>
+            <div class="tab-content">
+             
+                <div class="span">Using OPERATOR OVERLOADING , we can use cout default print method to print the linked
+                    list .
+                    Also we can use cascading approach to print multiple linked list throug single cout statement.
+                </div>
+                <pre>
+
+                    void operator&lt;&lt;(ostream &os,Node*head){
+                        print_LL(head);
+                        return;
+                    }
+
+                    <span>//Another Way using cascading of operators</span>
+
+                    ostream& operator&lt;&lt;(ostream &os,Node*head){
+                        print_LL(head);
+                        return os;
+                    }
+
+                    <span>//Similarly we can overload the right shift operator (>>) to take input</span>
+
+                    istream& operator>>(istream &is, Node*head){
+                        head= take_input();
+                        return is;
+                    }
+
+                </pre>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd9" name="rd">
+            <label class="tab-label" for="rd9">Q. Reverse a given Linked List?</label>
+            <div class="tab-content">
+                <pre>
+        
+                    <span>//Iterative Approach</span>
+                    void reverse_LL(Node*&head){
+                
+                        Node*C=head;
+                        Node*prev=NULL;
+                        Node*N=head;
+                
+                        while(C!=NULL){
+                            <span>//save the next node before altering the address of the current node</span>
+                            N=C->next;
+                            <span>//now change the current node adress to the previous node (=NULL)</span>
+                            C->next=prev;
+                
+                            <span>//now move prev node pointing to current node and current node pointing to next node< /span>
+                            prev=C;
+                            C=N;
+                        }
+                
+                        head=prev;
+                    }
+                </pre>
+
+                <h4>Using Recursion Reversing A given a Linked List</h4>
+                <pre>
+        
+                    <span>//Recursive Approach</span>
+                
+                    void RecursiveReverse(Node*head){
+                        <span>////base case</span>
+                        if(head==NULL or head->next==NULL){
+                            return head;
+                        }
+                
+                        Node*shead = RecursiveReverse(head->next);
+                        
+                        Node*temp=shead;
+                
+                        while(temp->next!=NULL){
+                            temp=temp->next;
+                        }
+                
+                        head->next=NULL;
+                        temp->next=head;
+                        
+                        return shead;
+                        
+                    }
+        
+                 </pre>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" id="rd10" name="rd">
+            <label class="tab-label" for="rd10">Q. Calculate MidPoint of a Linked List</label>
+            <div class="tab-content">        
+                <pre>
+                    <span>//<p>Using Runner Technique</p></span>
+                    Node* MidPoint(Node*head){
+                        Node*fastHorse=head;
+                        Node*slowHorse=head;
+        
+                        while(fastHorse->next!=NULL){
+                            slowHorse=slowHorse->next;
+                            fastHorse=fastHorse->next->next;
+                        }
+                        return slowHorse;
+                    }
+                </pre>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd11" name="rd">
+            <label for="rd11" class="tab-close">Close others &times;</label>
+        </div>
     </div>
+    </div>
+    </div>
+
+    <footer>
+        <span id="spanFooter">&#169; Made with Love by Arun Bhadouriya &#128525</span>
+    </footer>
+</body>
 </html>
