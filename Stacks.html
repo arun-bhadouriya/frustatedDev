@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./AB.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 style="text-align: center; text-decoration: none; ">|Stacks|</h1>
+
+    <div class="wrapper">
+        <div class="tab">
+            <input type="radio" id="rd1" name="rd">
+            <label class="tab-label" for="rd1">Stacks Implementation (Using Vectors)</label>
+            <div class="tab-content">
+                <pre>
+#include &lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+class stack{
+    private: 
+        vector &lt;int&gt; v;
+        int top=-1;
+    public:
+        bool empty(){
+            return v.empty();
+        }
+        void push(int d){
+            v.push_back(d);
+            top=d;
+        }
+        void pop(){
+            if(!empty()){
+                v.pop_back();
+                top=v.back();
+            }
+        }
+        
+        void getTop(){
+            if(top!=NULL){
+                cout&lt;&lt;top&lt;&lt;endl;
+            } 
+            else{
+                cout&lt;&lt;-1&lt;&lt;endl;
+            }
+        }
+};
+int main() {
+    stack s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    
+    
+    <span>//print Stack</span>
+    while(!s.empty()){
+        s.getTop();
+        s.pop();
+    }
+        
+    <span>// s.getTop();</span>
+
+
+}
+
+    <span>
+        // Also we can Use the templated class to generalize the datatype for our stack class using template&lt;typename T&gt;
+    </span>
+#include &lt;iostream>
+    #include &lt;vector>
+    using namespace std;
+    
+    //Implementation of Stack Data Structure using Vector
+    
+    template&lt;typename T,typename U>
+    class Stack{
+    private:
+        vector&lt;T> v; 
+        vector&lt;U> v2;   
+    public:
+        void push(T data){
+            v.push_back(data);
+        }
+        bool empty(){
+            return v.size()==0;
+        }
+        void pop(){
+            if(!empty()){
+                    v.pop_back();
+            }
+        }
+        T top(){
+            return v[v.size()-1];
+        }
+    };
+    
+    int main() {
+        Stack&lt;char,int> s;
+    
+        for(int i=65;i&lt;=70;i++){
+            s.push(i);
+        }
+        <span>//Try to print the content of the stack by popping each element</span>
+        while(!s.empty()){
+            cout&lt;&lt;s.top()&lt;&lt;endl;
+            s.pop();
+        }
+    
+    
+        
+    return 0;
+    }
+        
+                </pre>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" id="rd2" name="rd">
+            <label class="tab-label" for="rd2">Stacks Implementation (Using Arrays)</label>
+            <div class="tab-content">
+                
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd11" name="rd">
+            <label class="tab-label" for="rd11">Reverse a Stack using another Stack.</label>
+            <div class="tab-content">
+                <pre>
+                    #include &lt;iostream>
+                        #include&lt;stack>
+                        using namespace std;
+                        
+                        //Q. reverse a stack using another stack ?
+                        
+                        
+                        void transfer(stack&lt;int> &s1, stack &lt;int> &s2,int n){
+                        
+                            for(int i=0;i&lt;n;i++){
+                                s2.push(s1.top());
+                                s1.pop();
+                            }
+                        }
+                        
+                        void reverse(stack&lt;int> &a){
+                            stack &lt;int>s;
+                            int n = a.size();
+                            for(int i=0; i&lt;n; i++){
+                                
+                                int x = a.top();
+                                a.pop();
+                        
+                                for(int j=0;j&lt;n-i-1;i++){
+                                    s.push(a.top());
+                                    a.pop();
+                                }
+                                // transfer(a,s,n-i-1);
+                                a.push(x);
+                                transfer(s,a,n-i-1);
+                                for(int j=0;j&lt;n-i-1;i++){
+                                    a.push(s.top());
+                                    s.pop();
+                                }
+                            }
+                        }
+                        
+                        int main() {
+                            stack&lt;int> s;
+                            for (int i=1;i&lt;=4;i++){
+                                s.push(i);
+                            }
+                            <span>// cout&lt;&lt;s.size()&lt;&lt;endl;</span>
+                            reverse(s);
+                            while(!s.empty()){
+                                cout&lt;&lt;s.top()&lt;&lt;endl;
+                                s.pop();
+                            }
+                        }
+                        
+                </pre>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="rd3" name="rd">
+            <label for="rd3" class="tab-close">Close others &times;</label>
+        </div>
+    </div>
+    <footer>
+        <span id="spanFooter">&#169; Made with Love by Arun Bhadouriya &#128525</span>
+    </footer>
+    
+    <!-- 
+<div class="tab">
+    <input type="radio" id="rd11" name="rd">
+    <label class="tab-label" for="rd11"></label>
+    <div class="tab-content">
+        
+    </div>
+</div> -->
+</body>
+</html>

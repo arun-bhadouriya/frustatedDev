@@ -13,7 +13,7 @@
 <body>
     
     <h1 style="text-align: center; text-decoration: none; "> | Linked List |</h1>
-    <div class="wrapperLinkedList">
+    <div class="wrapper">
         <div class="col">
             <div class="tabs">
                 <div class="tab">
@@ -705,7 +705,7 @@ bool detectCycle(node*head){
                 <!-- <h4 class="inContent">Circular Linked List.</h4> -->
                 <div class="tab">
                     <input type="radio" id="rd16" name="rd">
-                    <label for="rd16" class="tab-label">Q. Insertion In Circular Linked List.</label>
+                    <label for="rd16" class="tab-label">Q. Insertion And Deletion In Circular Linked List.</label>
                     <div class="tab-content">
                         <pre>
 #include <iostream>
@@ -739,6 +739,42 @@ void insert(node*&head, int data){
     head= n ;
 }
 
+<span>//function to get node pointer to the desired node</span>
+node* getNode(node*head,int data){
+    node*temp=head;
+    while(temp->next!=head){
+        if(temp->d==data){
+            return temp;
+        }
+        temp=temp->next;
+    }
+    if(temp->d==data){
+        return temp;
+    }
+
+    return NULL;
+}
+
+<span>//function to delete a given Node</span>
+void deleteNode(node*&head, int data){
+
+    node* del= getNode(head,data);
+
+    if(del==NULL) return;
+
+    if(del==head){
+        head= head->next;
+    }
+
+    node*temp= head;
+    while(temp->next!=del){
+        temp=temp->next;
+    }
+    temp->next=del->next;
+    delete del;
+    return;
+}
+
 void print(node*head){
     node*tail=head;
     while(tail->next!=head){
@@ -763,7 +799,14 @@ int main() {
                 </div>
                 <div class="tab">
                     <input type="radio" id="rd17" name="rd">
-                    <label for="rd17" class="tab-close">Close others &times;</label>
+                    <label class="tab-label" for="rd17">Q. FORWARD LIST STL (doubly linked list)</label>
+                    <div class="tab-content">
+                        
+                    </div>
+                </div>
+                <div class="tab">
+                    <input type="radio" id="rd18" name="rd">
+                    <label for="rd18" class="tab-close">Close others &times;</label>
                 </div>
             </div>
         </div>
