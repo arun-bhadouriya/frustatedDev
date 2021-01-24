@@ -230,3 +230,12 @@ body{
     top: 8px;
     left: 91px;
 }
+
+.queueSection,.dequeSection{
+  width: 86.7%;
+  margin: auto;
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+

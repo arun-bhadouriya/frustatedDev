@@ -152,17 +152,17 @@ int main() {
                                 int x = a.top();
                                 a.pop();
                         
-                                for(int j=0;j&lt;n-i-1;i++){
+                                <!-- for(int j=0;j&lt;n-i-1;i++){
                                     s.push(a.top());
                                     a.pop();
-                                }
-                                // transfer(a,s,n-i-1);
+                                } -->
+                                transfer(a,s,n-i-1);
                                 a.push(x);
                                 transfer(s,a,n-i-1);
-                                for(int j=0;j&lt;n-i-1;i++){
+                                <!-- for(int j=0;j&lt;n-i-1;i++){
                                     a.push(s.top());
                                     s.pop();
-                                }
+                                } -->
                             }
                         }
                         
@@ -182,6 +182,114 @@ int main() {
                 </pre>
             </div>
         </div>
+
+        <div class="tab">
+            <input type="radio" id="rd12" name="rd">
+            <label class="tab-label" for="rd12">Rverse Stack (Using Recursion)</label>
+            <div class="tab-content">
+                <pre>
+                    #include &lt;iostream&gt;
+                        #include&lt;stack&gt;
+                        using namespace std;
+                        
+                        void insertAtBottom(stack&lt;int&gt; &s,int x){
+                            if(s.empty()){
+                                s.push(x);
+                                return;
+                            }
+                            int data = s.top();
+                            s.pop();
+                            insertAtBottom(s,x);
+                            s.push(data);
+                        }
+                        
+                        void recursiveReverse(stack&lt;int&gt; &s){
+                            <span>//base case</span> 
+                            if(s.empty()){
+                                return;
+                            }
+                        
+                            int x = s.top();
+                            s.pop();
+                            recursiveReverse(s);
+                            insertAtBottom(s,x);
+                        }
+                        
+                        int main() {
+                            stack &lt;int&gt; s;
+                            for(int i =4 ; i>0; i--){
+                                s.push(i);
+                            }
+                            <!-- // while(!s.empty()){
+                            //     cout<<s.top()<<endl;
+                            //     s.pop();
+                            // } -->
+                            recursiveReverse(s);
+                            while(!s.empty()){
+                                cout&lt;&lt;s.top()&lt;&lt;endl;
+                                s.pop();
+                            }
+                        }
+                        
+                </pre>
+            </div>
+        </div>
+
+        <div class="tab">
+            <input type="radio" id="rd13" name="rd">
+            <label class="tab-label" for="rd13">Balanced Parenthisis</label>
+            <div class="tab-content">
+                <pre>
+                    #include &lt;iostream&gt;
+                        #include&lt;stack&gt;
+                        using namespace std;
+                        
+                        bool isBalancedParenthesis(char *s){
+                            stack&lt;char&gt;stk;
+                            for(int i=0; s[i]!='\0'; i++){
+                                char ch =s[i];
+                                if(ch=='('){
+                                    stk.push(ch);
+                                }
+                                else if(ch==')' and stk.empty()){
+                                    return false;
+                                }
+                                else if(ch==')'){
+                                    if(stk.top()=='('){
+                                        stk.pop();
+                                    }else{
+                                        return false;
+                                    }
+                                }
+                            }
+                            <span>
+                            // while(!stk.empty()){
+                            //     cout&lt;&lt;stk.top()&lt;&lt;endl;
+                            //     stk.pop();
+                            // }
+                        </span>
+                            return stk.empty();
+                        
+                        }
+                        
+                        int main() {
+                            char s[100] = "(()))";
+                            if(isBalancedParenthesis(s)){
+                                cout&lt;&lt;"Yes";
+                            }
+                            else{
+                                cout&lt;&lt;"NO";
+                            }
+                        
+                           
+                        
+                          
+                        }
+                        
+                </pre>
+            </div>
+        </div>
+
         <div class="tab">
             <input type="radio" id="rd3" name="rd">
             <label for="rd3" class="tab-close">Close others &times;</label>
